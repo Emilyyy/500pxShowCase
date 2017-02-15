@@ -15,9 +15,25 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var navTitle: UINavigationItem!
+  
+    
     
     var photos3: [[String: Any]]?
     var photos4: [[String: Any]]?
+    
+    var photoList: [[String: Any]]?
+    
+    @IBAction func nudeImageSwitch(_ sender: UISwitch) {
+        _ = photoList?.map {print($0["nsfw"] ?? 0)}
+        photoList = photos3?.filter({
+          sender.isOn || !sender.isOn &&  (($0["nsfw"] as? Int) ?? 0) == 0
+           
+            
+        })
+        collectionView.reloadData()
+        print("count:  \(photoList?.count)")
+        _ = photoList?.map {print($0["nsfw"] ?? 0)}
+    }
     
     
     
@@ -39,6 +55,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             if let json = try? Data(contentsOf: url){
                 if let d = try? JSONSerialization.jsonObject(with: json, options: []) as? [String: Any]{
                     photos3 = d?["photos"] as? [[String: Any]]
+                    photoList = photos3
                     navTitle.title = d?["feature"] as? String
                    // print(d)
                     
@@ -68,14 +85,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos3?.count ?? 0
+        return photoList?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
        // let str = photos?[indexPath.row]
         
-        if let photo = photos3?[indexPath.row]{
+        if let photo = photoList?[indexPath.row]{
             //let a = ((photo["user"] as? [String: Any])?["avatars"] as? [String: Any])?["large"]
            // if let str = (((photo["user"] as? [String: Any])?["avatars"] as? [String: Any])?["large"] as? [String:Any])?["https"] as? String {
             if let str = photo["image_url"] as? String {
