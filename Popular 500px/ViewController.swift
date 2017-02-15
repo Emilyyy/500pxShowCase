@@ -18,6 +18,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
   
     @IBOutlet weak var toolbar: UIToolbar!
     
+    @IBAction func refresh(_ sender: Any) {
+        fetchImages()
+        collectionView.reloadData()
+    }
+    
+    
     @IBOutlet weak var total: UIBarButtonItem!
     
     var photos4: [[String: Any]]?
@@ -26,9 +32,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBAction func nudeImageSwitch(_ sender: UISwitch) {
    
-        photoDisplay = photos4?.filter({
-            sender.isOn || !sender.isOn &&  (($0["nsfw"] as? Int) ?? 0) == 0
-        })
+//        photoDisplay = photos4?.filter({
+//            sender.isOn || !sender.isOn &&  (($0["nsfw"] as? Int) ?? 0) == 0
+//        })
+        if let f = photos4?.filter({ sender.isOn || (!sender.isOn && !($0["nsfw"] as? Bool ?? false)) }){
+            photoDisplay? = f
+        }
 
         collectionView.reloadData()
     }
@@ -54,7 +63,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
   
     func fetchImages() {
 
-        let imageStr = "https://api.500px.com/v1/photos?feature=popular&sort=created_at&image_size=4&include_store=store_download&include_states=voted&consumer_key=QIEirwEcU0sgPfIId2Dy6W0mOJjyaOKvBBCEEGk6"
+        let imageStr = "https://api.500px.com/v1/photos?feature=popular&sort=created_at&page=1&image_size=4&include_store=store_download&include_states=voted&consumer_key=QIEirwEcU0sgPfIId2Dy6W0mOJjyaOKvBBCEEGk6"
         
         if let url = URL(string: imageStr){
             if let json = try? Data(contentsOf: url){
