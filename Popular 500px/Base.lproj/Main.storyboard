@@ -103,7 +103,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="UICollectionController" id="3zn-vD-tQN">
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="refresh" id="8Ro-tM-MoU">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="8Ro-tM-MoU">
                             <connections>
                                 <action selector="refresh:" destination="BYZ-38-t0r" id="EsE-O7-XVV"/>
                             </connections>
@@ -135,8 +135,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x4L-IR-k92">
-                                <rect key="frame" x="0.0" y="64" width="375" height="502"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x4L-IR-k92">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zQH-Bt-2k8">
                                 <rect key="frame" x="0.0" y="566" width="375" height="101"/>
@@ -191,10 +191,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="x4L-IR-k92" firstAttribute="leading" secondItem="Gkc-FG-K3l" secondAttribute="leading" id="0CH-ZD-uY9"/>
-                            <constraint firstItem="x4L-IR-k92" firstAttribute="top" secondItem="Gkc-FG-K3l" secondAttribute="top" constant="75" id="4CY-ag-ieW"/>
+                            <constraint firstItem="x4L-IR-k92" firstAttribute="top" secondItem="Gkc-FG-K3l" secondAttribute="top" constant="64" id="4CY-ag-ieW"/>
                             <constraint firstItem="x4L-IR-k92" firstAttribute="bottom" secondItem="89R-Kp-Wep" secondAttribute="top" id="AwB-8R-9BY"/>
                             <constraint firstAttribute="trailing" secondItem="x4L-IR-k92" secondAttribute="trailing" id="FJi-oa-mvg"/>
-                            <constraint firstItem="x4L-IR-k92" firstAttribute="top" secondItem="fd9-pa-JzC" secondAttribute="bottom" id="KIj-yQ-mnv"/>
                         </constraints>
                     </view>
                     <connections>

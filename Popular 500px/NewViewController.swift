@@ -18,21 +18,18 @@ class NewViewController: UIViewController {
     
     @IBOutlet weak var descritionPanel: UIView!
 
-   // var image = UIImage()
     var photo: [String: Any]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.imageView.image = self.image
         if let str = photo["image_url"] as? String {
             if let url = URL(string: str){
                 if let data = try? Data(contentsOf: url){
                     let image = UIImage(data: data)
                     imageView?.image = image
                     imageView?.contentMode = UIViewContentMode.scaleAspectFit
-                    //cell.titleLabel?.text = ""
-                    // print(data)
+
                     
                 }
             }
@@ -49,16 +46,13 @@ class NewViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        print(self.view.frame)
         var rect = imageView.frame
-        //rect.origin.y = navigationItem.titleView?.frame
         rect.size.height = view.frame.height - descritionPanel.frame.height - imageView.frame.origin.y
         imageView.frame = rect
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
