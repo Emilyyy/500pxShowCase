@@ -30,6 +30,7 @@ class NewViewController: UIViewController {
                 if let data = try? Data(contentsOf: url){
                     let image = UIImage(data: data)
                     imageView?.image = image
+                    imageView?.contentMode = UIViewContentMode.scaleAspectFit
                     //cell.titleLabel?.text = ""
                     // print(data)
                     
@@ -41,12 +42,17 @@ class NewViewController: UIViewController {
         imageView.contentMode = UIViewContentMode.scaleAspectFit
         imageName.text = photo["name"] as? String
         imageAuthor.text = (photo["user"] as? [String: Any])? ["fullname"] as? String
-        imageRating.text = photo["rating"] as? String
+        if let rate = photo["rating"]{
+             imageRating.text = String(describing: rate)
+        }
+       
     }
     
     override func viewDidLayoutSubviews() {
+        print(self.view.frame)
         var rect = imageView.frame
-        rect.size.height = view.frame.height - descritionPanel.frame.height
+        //rect.origin.y = navigationItem.titleView?.frame
+        rect.size.height = view.frame.height - descritionPanel.frame.height - imageView.frame.origin.y
         imageView.frame = rect
     }
     
