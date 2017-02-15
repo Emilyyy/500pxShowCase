@@ -97,18 +97,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     if let p = d? ["total_pages"] as? Int{
                         pages = p
                         //page = p > 0 ? 1 : 0
-                        if page == 1{
-                            previousPage.isEnabled = false
-                            nextPage.isEnabled = true
-                        }
-                        else if page == pages{
-                            nextPage.isEnabled = false
-                            previousPage.isEnabled = true
-                        }
-                        else{
-                            previousPage.isEnabled = true
-                            nextPage.isEnabled = true
-                        }
+//                        if page == 1{
+//                            previousPage.isEnabled = false
+//                            nextPage.isEnabled = true
+//                        }
+//                        else if page == pages{
+//                            nextPage.isEnabled = false
+//                            previousPage.isEnabled = true
+//                        }
+//                        else{
+//                            previousPage.isEnabled = true
+//                            nextPage.isEnabled = true
+//                        }
+                        
+                        previousPage.isEnabled = page != 1
+                        nextPage.isEnabled = page < pages
                         self.pageNumber.title = "\(page)/\(pages)"
                     }
                     photos4 = d?["photos"] as? [[String: Any]]
