@@ -18,21 +18,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
   
     
     
-    var photos3: [[String: Any]]?
     var photos4: [[String: Any]]?
     
-    var photoList: [[String: Any]]?
+    var photoDisplay: [[String: Any]]?
     
     @IBAction func nudeImageSwitch(_ sender: UISwitch) {
-        _ = photoList?.map {print($0["nsfw"] ?? 0)}
-        photoList = photos3?.filter({
-          sender.isOn || !sender.isOn &&  (($0["nsfw"] as? Int) ?? 0) == 0
-           
-            
+      //  _ = photoList?.map {print($0["nsfw"] ?? 0)}
+       // photoList = photos3?.filter({
+        //  sender.isOn || !sender.isOn &&  (($0["nsfw"] as? Int) ?? 0) == 0
+       // })
+        photoDisplay = photos4?.filter({
+            sender.isOn || !sender.isOn &&  (($0["nsfw"] as? Int) ?? 0) == 0
         })
+
         collectionView.reloadData()
-        print("count:  \(photoList?.count)")
-        _ = photoList?.map {print($0["nsfw"] ?? 0)}
+     //   print("count:  \(photoList?.count)")
+       // _ = photoList?.map {print($0["nsfw"] ?? 0)}
     }
     
     
@@ -49,27 +50,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
   
     func fetchImages() {
-        var imageStr = "https://api.500px.com/v1/photos?feature=popular&sort=created_at&image_size=3&include_store=store_download&include_states=voted&consumer_key=QIEirwEcU0sgPfIId2Dy6W0mOJjyaOKvBBCEEGk6"
-        
-        if let url = URL(string: imageStr){
-            if let json = try? Data(contentsOf: url){
-                if let d = try? JSONSerialization.jsonObject(with: json, options: []) as? [String: Any]{
-                    photos3 = d?["photos"] as? [[String: Any]]
-                    photoList = photos3
-                    navTitle.title = d?["feature"] as? String
-                   // print(d)
-                    
-                }
 
-            }
-            
-        }
-        imageStr = "https://api.500px.com/v1/photos?feature=popular&sort=created_at&image_size=4&include_store=store_download&include_states=voted&consumer_key=QIEirwEcU0sgPfIId2Dy6W0mOJjyaOKvBBCEEGk6"
+        let imageStr = "https://api.500px.com/v1/photos?feature=popular&sort=created_at&image_size=4&include_store=store_download&include_states=voted&consumer_key=QIEirwEcU0sgPfIId2Dy6W0mOJjyaOKvBBCEEGk6"
         
         if let url = URL(string: imageStr){
             if let json = try? Data(contentsOf: url){
                 if let d = try? JSONSerialization.jsonObject(with: json, options: []) as? [String: Any]{
                     photos4 = d?["photos"] as? [[String: Any]]
+                    photoDisplay = photos4
+                    
                    // print(d)
                     
                 }
@@ -85,14 +74,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photoList?.count ?? 0
+        return photoDisplay?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
        // let str = photos?[indexPath.row]
         
-        if let photo = photoList?[indexPath.row]{
+        if let photo = photoDisplay?[indexPath.row]{
             //let a = ((photo["user"] as? [String: Any])?["avatars"] as? [String: Any])?["large"]
            // if let str = (((photo["user"] as? [String: Any])?["avatars"] as? [String: Any])?["large"] as? [String:Any])?["https"] as? String {
             if let str = photo["image_url"] as? String {
@@ -134,7 +123,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             let vc = segue.destination as! NewViewController
             
-            vc.photo = self.photos4![indexPath.row]
+            vc.photo = self.photoDisplay![indexPath.row]
            // vc.title = self.appleProduct[indexPath.row]
             
             
