@@ -18,6 +18,29 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
   
     @IBOutlet weak var toolbar: UIToolbar!
     
+    @IBOutlet weak var previousPage: UIBarButtonItem!
+    
+    @IBOutlet weak var nextPage: UIBarButtonItem!
+    @IBOutlet weak var pageNumber: UIBarButtonItem!
+    
+    @IBAction func next(_ sender: Any) {
+        page += 1
+        if page > pages{
+            page = pages
+        }
+        fetchImages()
+        collectionView.reloadData()
+    }
+    @IBAction func previous(_ sender: Any) {
+        page -= 1
+        if page < 1{
+            page = 1
+        }
+
+        fetchImages()
+        collectionView.reloadData()
+        
+    }
     @IBAction func refresh(_ sender: Any) {
         fetchImages()
         collectionView.reloadData()
@@ -29,6 +52,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var photos4: [[String: Any]]?
     
     var photoDisplay: [[String: Any]]?
+    
+    var pages = 1
+    var page = 1
     
     @IBAction func nudeImageSwitch(_ sender: UISwitch) {
    
@@ -63,11 +89,28 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
   
     func fetchImages() {
 
-        let imageStr = "https://api.500px.com/v1/photos?feature=popular&sort=created_at&page=1&image_size=4&include_store=store_download&include_states=voted&consumer_key=QIEirwEcU0sgPfIId2Dy6W0mOJjyaOKvBBCEEGk6"
+        let imageStr = "https://api.500px.com/v1/photos?feature=popular&sort=created_at&page=%d&image_size=4&include_store=store_download&include_states=voted&consumer_key=QIEirwEcU0sgPfIId2Dy6W0mOJjyaOKvBBCEEGk6"
         
-        if let url = URL(string: imageStr){
+        if let url = URL(string: String(format: imageStr, page)){
             if let json = try? Data(contentsOf: url){
                 if let d = try? JSONSerialization.jsonObject(with: json, options: []) as? [String: Any]{
+                    if let p = d? ["total_pages"] as? Int{
+                        pages = p
+                        //page = p > 0 ? 1 : 0
+                        if page == 1{
+                            previousPage.isEnabled = false
+                            nextPage.isEnabled = true
+                        }
+                        else if page == pages{
+                            nextPage.isEnabled = false
+                            previousPage.isEnabled = true
+                        }
+                        else{
+                            previousPage.isEnabled = true
+                            nextPage.isEnabled = true
+                        }
+                        self.pageNumber.title = "\(page)/\(pages)"
+                    }
                     photos4 = d?["photos"] as? [[String: Any]]
                     photoDisplay = photos4
                     navTitle.title = (d?["feature"] as? String)?.uppercased()
@@ -87,7 +130,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let total = photoDisplay?.count ?? 0
-        self.total.title = "Total: \(total)"
+      //  self.total.title = "Total: \(total)"
+        
         return total
     }
     

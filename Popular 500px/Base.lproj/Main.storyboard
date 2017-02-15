@@ -66,23 +66,27 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O74-V9-cop">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="0" id="QTK-r6-99a"/>
+                                    <barButtonItem title="Previous" id="Idi-gX-Hgc">
+                                        <connections>
+                                            <action selector="previous:" destination="BYZ-38-t0r" id="ZbC-tz-eLu"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="0" id="uMl-Qk-Ul3"/>
+                                    <barButtonItem title="Next" id="HVm-Is-mhw">
+                                        <connections>
+                                            <action selector="next:" destination="BYZ-38-t0r" id="8He-8x-ZGq"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="NlN-sn-hZA"/>
                                     <barButtonItem title="Nude Image" id="64R-Ng-Doe"/>
                                     <barButtonItem style="plain" id="htN-ak-ptX">
                                         <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="wGT-Wg-lWo">
-                                            <rect key="frame" x="213" y="6.5" width="51" height="31"/>
+                                            <rect key="frame" x="310" y="7" width="51" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <connections>
                                                 <action selector="nudeImageSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="ffx-K3-e2V"/>
                                             </connections>
                                         </switch>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="zvH-v1-ZxQ"/>
-                                    <barButtonItem title="Item" systemItem="refresh" id="8Ro-tM-MoU">
-                                        <connections>
-                                            <action selector="refresh:" destination="BYZ-38-t0r" id="EsE-O7-XVV"/>
-                                        </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
@@ -98,12 +102,20 @@
                             <constraint firstItem="Bjx-Ns-0Zy" firstAttribute="leading" secondItem="O74-V9-cop" secondAttribute="leading" id="p5m-QE-JXS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="UICollectionController" id="3zn-vD-tQN"/>
+                    <navigationItem key="navigationItem" title="UICollectionController" id="3zn-vD-tQN">
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="refresh" id="8Ro-tM-MoU">
+                            <connections>
+                                <action selector="refresh:" destination="BYZ-38-t0r" id="EsE-O7-XVV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Bjx-Ns-0Zy" id="V10-1D-HV7"/>
                         <outlet property="navTitle" destination="3zn-vD-tQN" id="AK1-Sg-Sf4"/>
+                        <outlet property="nextPage" destination="HVm-Is-mhw" id="dqP-16-nWk"/>
+                        <outlet property="pageNumber" destination="uMl-Qk-Ul3" id="hh8-gf-b69"/>
+                        <outlet property="previousPage" destination="Idi-gX-Hgc" id="cTI-Wg-OF2"/>
                         <outlet property="toolbar" destination="O74-V9-cop" id="DPK-Te-9y5"/>
-                        <outlet property="total" destination="QTK-r6-99a" id="3wD-KX-Cej"/>
                         <segue destination="c0X-Uk-wbq" kind="show" identifier="showImage" id="fB8-vM-bVY"/>
                     </connections>
                 </viewController>
