@@ -10,8 +10,11 @@ import UIKit
 
 class NewViewController: UIViewController {
     
+    @IBOutlet weak var imageName: UILabel!
     @IBOutlet weak var imageView: UIImageView!
 
+    @IBOutlet weak var imageRating: UILabel!
+    @IBOutlet weak var imageAuthor: UILabel!
    // var image = UIImage()
     var photo: [String: Any]!
 
@@ -33,7 +36,9 @@ class NewViewController: UIViewController {
         }
 
         imageView.contentMode = UIViewContentMode.scaleAspectFit
-        
+        imageName.text = photo["name"] as? String
+        imageAuthor.text = (photo["user"] as? [String: Any])? ["fullname"] as? String
+        imageRating.text = photo["rating"] as? String
     }
     
     override func didReceiveMemoryWarning() {
