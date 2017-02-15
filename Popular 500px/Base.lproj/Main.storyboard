@@ -108,12 +108,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x4L-IR-k92">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x4L-IR-k92">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="x4L-IR-k92" firstAttribute="leading" secondItem="Gkc-FG-K3l" secondAttribute="leading" id="0CH-ZD-uY9"/>
+                            <constraint firstItem="x4L-IR-k92" firstAttribute="top" secondItem="Gkc-FG-K3l" secondAttribute="top" id="4CY-ag-ieW"/>
+                            <constraint firstItem="x4L-IR-k92" firstAttribute="bottom" secondItem="89R-Kp-Wep" secondAttribute="top" id="AwB-8R-9BY"/>
+                            <constraint firstAttribute="trailing" secondItem="x4L-IR-k92" secondAttribute="trailing" id="FJi-oa-mvg"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="x4L-IR-k92" id="YPg-0Y-MBQ"/>
