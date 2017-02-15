@@ -32,7 +32,7 @@ class NewViewController: UIViewController {
             
         }
 
-        imageView.contentMode = UIViewContentMode.scaleAspectFit
+        //imageView.contentMode = UIViewContentMode.scaleAspectFit
         
     }
     

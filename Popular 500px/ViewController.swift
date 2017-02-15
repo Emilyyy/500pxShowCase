@@ -90,8 +90,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         let image = UIImage(data: data)
                         cell.imageView?.image = image
                         cell.titleLabel?.text = ""
-                        cell.imageView.contentMode = UIViewContentMode.scaleAspectFit
-                        cell.imageView.sizeToFit()
+                        //cell.imageView.contentMode = UIViewContentMode.scaleAspectFit
+                       // cell.imageView.sizeToFit()
                        // print(data)
                         
                     }

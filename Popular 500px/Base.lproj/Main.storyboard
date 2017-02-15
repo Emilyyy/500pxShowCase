@@ -26,35 +26,27 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WXS-z9-1ss">
-                                    <size key="itemSize" width="250" height="250"/>
+                                    <size key="itemSize" width="111" height="111"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="oqo-ad-7u4" customClass="CollectionViewCell" customModule="Popular_500px" customModuleProvider="target">
-                                        <rect key="frame" x="63" y="10" width="250" height="250"/>
+                                        <rect key="frame" x="10" y="10" width="111" height="111"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="111" height="111"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rzc-Z5-6Rj">
-                                                    <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="111" height="111"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ksg-1j-bA1">
-                                                    <rect key="frame" x="8" y="221" width="234" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                         </view>
                                         <connections>
                                             <outlet property="imageView" destination="Rzc-Z5-6Rj" id="Lju-XL-vWR"/>
-                                            <outlet property="titleLabel" destination="Ksg-1j-bA1" id="IQL-wu-rtG"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
