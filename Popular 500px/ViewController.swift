@@ -23,17 +23,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var photoDisplay: [[String: Any]]?
     
     @IBAction func nudeImageSwitch(_ sender: UISwitch) {
-      //  _ = photoList?.map {print($0["nsfw"] ?? 0)}
-       // photoList = photos3?.filter({
-        //  sender.isOn || !sender.isOn &&  (($0["nsfw"] as? Int) ?? 0) == 0
-       // })
+   
         photoDisplay = photos4?.filter({
             sender.isOn || !sender.isOn &&  (($0["nsfw"] as? Int) ?? 0) == 0
         })
 
         collectionView.reloadData()
-     //   print("count:  \(photoList?.count)")
-       // _ = photoList?.map {print($0["nsfw"] ?? 0)}
     }
     
     
@@ -58,8 +53,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 if let d = try? JSONSerialization.jsonObject(with: json, options: []) as? [String: Any]{
                     photos4 = d?["photos"] as? [[String: Any]]
                     photoDisplay = photos4
-                    
-                   // print(d)
+                    navTitle.title = (d?["feature"] as? String)?.uppercased()
+                   //print(d)
                     
                 }
                 
