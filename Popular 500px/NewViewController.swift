@@ -15,6 +15,9 @@ class NewViewController: UIViewController {
 
     @IBOutlet weak var imageRating: UILabel!
     @IBOutlet weak var imageAuthor: UILabel!
+    
+    @IBOutlet weak var descritionPanel: UIView!
+
    // var image = UIImage()
     var photo: [String: Any]!
 
@@ -39,6 +42,12 @@ class NewViewController: UIViewController {
         imageName.text = photo["name"] as? String
         imageAuthor.text = (photo["user"] as? [String: Any])? ["fullname"] as? String
         imageRating.text = photo["rating"] as? String
+    }
+    
+    override func viewDidLayoutSubviews() {
+        var rect = imageView.frame
+        rect.size.height = view.frame.height - descritionPanel.frame.height
+        imageView.frame = rect
     }
     
     override func didReceiveMemoryWarning() {

@@ -16,6 +16,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var navTitle: UINavigationItem!
   
+    @IBOutlet weak var toolbar: UIToolbar!
     
     
     var photos4: [[String: Any]]?
@@ -38,6 +39,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         fetchImages()
     }
 
+    override func viewDidLayoutSubviews() {
+        var rect = collectionView.frame
+        rect.size.height = view.frame.height - toolbar.frame.height
+        collectionView.frame = rect
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
