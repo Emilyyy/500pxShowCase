@@ -18,6 +18,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
   
     @IBOutlet weak var toolbar: UIToolbar!
     
+    @IBOutlet weak var total: UIBarButtonItem!
     
     var photos4: [[String: Any]]?
     
@@ -76,7 +77,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photoDisplay?.count ?? 0
+        let total = photoDisplay?.count ?? 0
+        self.total.title = "Total: \(total)"
+        return total
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -92,7 +95,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         let image = UIImage(data: data)
                         cell.imageView?.image = image
                         cell.titleLabel?.text = ""
-                        //cell.imageView.contentMode = UIViewContentMode.scaleAspectFit
+                        cell.imageView.contentMode = UIViewContentMode.scaleAspectFit
                        // cell.imageView.sizeToFit()
                        // print(data)
                         

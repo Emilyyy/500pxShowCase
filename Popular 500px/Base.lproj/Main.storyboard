@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -40,6 +41,9 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rzc-Z5-6Rj">
                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Rzc-Z5-6Rj" secondAttribute="height" multiplier="1:1" id="Bdh-jJ-fHT"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -62,9 +66,12 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O74-V9-cop">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
+                                    <barButtonItem title="0" id="QTK-r6-99a"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="17m-Xr-wt2"/>
+                                    <barButtonItem title="Nude Image" id="64R-Ng-Doe"/>
                                     <barButtonItem style="plain" id="htN-ak-ptX">
                                         <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="wGT-Wg-lWo">
-                                            <rect key="frame" x="16" y="7" width="51" height="31"/>
+                                            <rect key="frame" x="310" y="7" width="51" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <connections>
                                                 <action selector="nudeImageSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="ffx-K3-e2V"/>
@@ -90,6 +97,7 @@
                         <outlet property="collectionView" destination="Bjx-Ns-0Zy" id="V10-1D-HV7"/>
                         <outlet property="navTitle" destination="3zn-vD-tQN" id="AK1-Sg-Sf4"/>
                         <outlet property="toolbar" destination="O74-V9-cop" id="DPK-Te-9y5"/>
+                        <outlet property="total" destination="QTK-r6-99a" id="3wD-KX-Cej"/>
                         <segue destination="c0X-Uk-wbq" kind="show" identifier="showImage" id="fB8-vM-bVY"/>
                     </connections>
                 </viewController>
@@ -109,12 +117,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x4L-IR-k92">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x4L-IR-k92">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="566"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zQH-Bt-2k8">
                                 <rect key="frame" x="0.0" y="574" width="375" height="93"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lbl-lX-vQa">
                                         <rect key="frame" x="8" y="14" width="55" height="21"/>
